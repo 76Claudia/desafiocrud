@@ -16,7 +16,6 @@ public class Client {
     private Integer children;
 
     public Client(){
-
     }
     public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
         this.id = id;
@@ -28,6 +27,7 @@ public class Client {
     }
 
     public Long getId() {
+
         return id;
     }
 
@@ -71,7 +71,8 @@ public class Client {
         return children;
     }
 
-    public void setChildren(Integer children) {
+    public void setChildren(Integer children)
+    {
         this.children = children;
     }
 }
