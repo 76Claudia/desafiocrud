@@ -30,9 +30,9 @@ public class ClientDTO {
        children = getChildren();
     }
 
-
-
-
+    public Long getId(){
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -52,4 +52,5 @@ public class ClientDTO {
     public Integer getChildren() {
         return children;
     }
+
 }
