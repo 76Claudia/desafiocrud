@@ -3,6 +3,7 @@ package com.claudiagomes.crud.services;
 import com.claudiagomes.crud.dto.ClientDTO;
 import com.claudiagomes.crud.entities.Client;
 import com.claudiagomes.crud.repositories.ClientRepository;
+import com.claudiagomes.crud.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,10 +19,10 @@ public class ClientService {
     private ClientRepository repository;
     @Transactional(readOnly = true)
     public ClientDTO findById(Long id){
-        Optional<Client> result = repository.findById(id);
-        Client client = result.get();
-        ClientDTO dto = new ClientDTO(client);
-        return dto;
+        Client client = repository.findById(id).orElseThrow(
+                ()-> new ResourceNotFoundException("Id nao encontrado"));
+        return new ClientDTO(client);
+
     }
     @Transactional(readOnly = true)
     public Page<ClientDTO> findAll(Pageable pageable){
